@@ -16,6 +16,8 @@ CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 # Toutes les 60 secondes un ping sera envoyé
 INTERVAL = 60
 
+desired_ports = [81, 5001, 5003, 5004, 5005]
+
 
 @client.event
 async def on_ready():
@@ -47,8 +49,8 @@ async def send_message_loop():
     user = await client.fetch_user(user_id)
 
     if channel:
-        True if check_port(ip, 80) else await channel.send(f"{user.mention}Port 80 down")
-        True if check_port(ip, 443) else await channel.send(f"{user.mention}Port 443 down")
+        for port in desired_ports:
+            True if check_port(ip, port) else await channel.send(f"{user.mention} Port {port} down")
     else:
         print("Salon introuvable.")
 
