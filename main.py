@@ -16,7 +16,7 @@ CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 # Toutes les 60 secondes un ping sera envoyé
 INTERVAL = 60
 
-desired_ports = [81, 5001, 5003, 5004, 5005]
+desired_ports = [80, 443, 8080]
 
 
 @client.event
